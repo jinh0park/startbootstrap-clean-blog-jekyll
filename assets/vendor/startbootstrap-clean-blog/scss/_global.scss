@@ -5,13 +5,33 @@ body {
   @include serif-font;
 }
 
-p, form {
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile_img {
+  width :30%;
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+}
+
+li {
   font-family: 'Nanum Gothic', serif;
-  font-size:20px;
+}
+
+form {
+  font-family: 'Nanum Gothic', serif;
 }
 
 p {
-  line-height: 1.5;
+  font-family: 'Nanum Gothic', serif;
+  line-height: 1.6;
   margin: 30px 0;
   a {
     text-decoration: underline;
