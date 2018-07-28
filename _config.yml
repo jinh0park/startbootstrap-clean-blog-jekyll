@@ -1,14 +1,14 @@
-title:             Clean Blog
-email:             your-email@example.com
-description:       A Blog Theme by Start Bootstrap
-author:            Start Bootstrap
+title:             JINH-ZERO-PARK
+email:             jinh0park@naver.com
+description:       jinh0park's Personal Place
+author:            jinh0park
 baseurl:           ""
-url:               "http://blackrockdigital.github.io"
+url:               "http://jinh0park.github.io"
 
 # Social Profiles
-twitter_username:  SBootstrap
-github_username:   BlackrockDigital
-facebook_username: StartBootstrap
+#twitter_username:  SBootstrap
+github_username:   jinh0park
+facebook_username: jinh0park
 
 # Build settings
 markdown:          kramdown
