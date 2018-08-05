@@ -13,6 +13,7 @@ facebook_username: jinh0park
 
 # Build settings
 markdown:          kramdown
+highlighter:       rouge
 paginate:          5
 paginate_path:     "/posts/page:num/"
 plugins:

@@ -5,13 +5,16 @@ body {
   @include serif-font;
 }
 
-pre {
+.highlight {
     background-color: whitesmoke;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px;
 }
 
-code {
-  background-color: whitesmoke;  
-}
+// code {
+//   background-color: whitesmoke;
+// }
 
 .center-image
 {
@@ -39,8 +42,8 @@ form {
 
 p {
   font-family: 'Nanum Gothic', serif;
-  line-height: 1.6;
-  margin: 30px 0;
+  line-height: 1.5;
+  margin: 20px 0;
   a {
     text-decoration: underline;
   }
