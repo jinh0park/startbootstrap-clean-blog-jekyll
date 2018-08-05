@@ -5,6 +5,14 @@ body {
   @include serif-font;
 }
 
+pre {
+    background-color: whitesmoke;
+}
+
+code {
+  background-color: whitesmoke;  
+}
+
 .center-image
 {
     margin: 0 auto;
