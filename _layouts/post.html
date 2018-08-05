@@ -32,7 +32,8 @@ layout: default
       {{ content }}
 
       <hr>
-
+      {% include disqus.html %}
+      <hr>
       <div class="clearfix">
 
         {% if page.previous.url %}
@@ -45,7 +46,7 @@ layout: default
       </div>
 
     </div>
-  </div>
-</div>
 
-{% include disqus.html %}
+  </div>
+
+</div>
