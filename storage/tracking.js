@@ -4,7 +4,7 @@ var sendData = function(data) {
     dataType: 'jsonp',
     data: data,
     jsonp: 'callback',
-    url: 'http://localhost:3000/endpointJSONP?callback=?',
+    url: 'https://77a01196.ngrok.io/endpointJSONP?callback=?',
     success: function(data) {
       //LOG
       console.log('success');
