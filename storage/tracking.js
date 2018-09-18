@@ -26,7 +26,7 @@ var setCookie = function(name, value, exp) {
 
 var issueID = function() {
   // 이미 쿠키에 id가 있으면 설정하지 않는다.
-  if getCookie('_zeroid'){
+  if(getCookie('_zeroid')){
     return False
   }
   var date= new Date()
