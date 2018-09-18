@@ -25,9 +25,13 @@ var setCookie = function(name, value, exp) {
 };
 
 var issueID = function() {
+  // 이미 쿠키에 id가 있으면 설정하지 않는다.
+  if getCookie('_zeroid'){
+    return False
+  }
   var date= new Date()
   exp = 7;  //7일 후에 만료
   date.setTime(date.getTime() + exp*24*60*60*1000);
   var value = `ZERO.${date.getTime()}.${Math.random()}`;
-  document.cookie = 'id=' + value + ';expires=' + date.toUTCString() + ';path=/';
+  document.cookie = '_zeroid=' + value + ';expires=' + date.toUTCString() + ';path=/';
 }
