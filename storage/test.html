@@ -3,7 +3,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://jinh0park.github.io/storage/tracking.js"></script>
 <script>
-  var data = {'data':123};
+  var data = {'data':getCookie('name')};
   data_ = JSON.stringify(data)
   $('#execute').click(function(){
     sendData(data_)
