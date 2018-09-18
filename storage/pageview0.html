@@ -9,7 +9,5 @@ Hello!
   var data = {'data':'local'};
   data_ = JSON.stringify(data)
   sendData(data_)
-  document.cookie = "name=Ethan";
-  document.cookie = "favoriteColor=Blue";
-  alert(document.cookie);
+  setCookie('name', 'Ethan', 7);
 </script>
