@@ -23,3 +23,11 @@ var setCookie = function(name, value, exp) {
   date.setTime(date.getTime() + exp*24*60*60*1000);
   document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
 };
+
+var issueID = function() {
+  var date= new Date()
+  exp = 7;  //7일 후에 만료
+  date.setTime(date.getTime() + exp*24*60*60*1000);
+  var value = `ZERO.${date.getTime()}.${Math.random()}`;
+  document.cookie = 'id=' + value + ';expires=' + date.toUTCString() + ';path=/';
+}
