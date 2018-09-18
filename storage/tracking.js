@@ -27,7 +27,7 @@ var setCookie = function(name, value, exp) {
 var issueID = function() {
   // 이미 쿠키에 id가 있으면 설정하지 않는다.
   if(getCookie('_zeroid')){
-    return False
+    return false
   }
   var date= new Date()
   exp = 7;  //7일 후에 만료
