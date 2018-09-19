@@ -5,7 +5,7 @@
 <script src="https://jinh0park.github.io/storage/tracking.js"></script>
 <script>
   var order_id = document.getElementById('order_id').value;
-  var data = {'id':getCookie('id'),'order_id':order_id};
+  var data = {'_zeroid':getCookie('_zeroid'),'order_id':order_id};
   data_ = JSON.stringify(data)
   $('#execute').click(function(){
     sendData(data_)
