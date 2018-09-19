@@ -35,10 +35,8 @@ var issueID = function() {
   var value = `ZERO.${date.getTime()}.${Math.random()}`;
   document.cookie = '_zeroid=' + value + ';expires=' + date.toUTCString() + ';path=/';
 }
-
-var order_id = document.getElementById('order_id').value;
-var date = new Date()
-var data = {'_zeroid':getCookie('_zeroid'),'action':'order','order_id':order_id,'timestamp':date.getTime()};
+var date = new Date();
+issueID()
+var data = {'_zeroid':getCookie('_zeroid'),'action':'visit','timestamp':date.getTime()};
 data_ = JSON.stringify(data)
-
 sendData(data_)
