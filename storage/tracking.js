@@ -47,5 +47,5 @@ var orderResult = function(){
 //모든 페이지에서 Default로 실행되는 구간
 issueID()
 
-JSON.stringify({'_zeroid':getCookie('_zeroid'),'action':'visit'};)
+JSON.stringify({'_zeroid':getCookie('_zeroid'),'action':'visit'})
 sendData(data_)
