@@ -4,7 +4,7 @@ var sendData = function(data) {
     dataType: 'jsonp',
     data: data,
     jsonp: 'callback',
-    url: 'https://1e68f732.ngrok.io/track?callback=?',
+    url: 'https://9aa372f5.ngrok.io/track?callback=?',
     success: function(data) {
       //LOG
       console.log('success');
