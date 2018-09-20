@@ -32,7 +32,7 @@ var issueID = function() {
   var date = new Date()
   exp = 7; //7일 후에 만료
   date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
-  var value = `ZERO.${date.getTime()}.${Math.random()}`;
+  var value = `ZERO.${date.getTime()}.${Math.round(Math.random()*1000000000)}`;
   document.cookie = '_zeroid=' + value + ';expires=' + date.toUTCString() + ';path=/';
 };
 
