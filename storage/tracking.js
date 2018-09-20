@@ -39,8 +39,7 @@ var issueID = function() {
 var orderResult = function(){
   var order_id = document.getElementById('order_id').value;
   var date = new Date()
-  var data = {'_zeroid':getCookie('_zeroid'),'action':'order','order_id':order_id};
-  var data_ = JSON.stringify(data)
+  var data_ = JSON.stringify({'_zeroid':getCookie('_zeroid'),'action':'order','order_id':order_id})
   sendData(data_)
 }
 
@@ -48,8 +47,5 @@ var orderResult = function(){
 //모든 페이지에서 Default로 실행되는 구간
 issueID()
 
-function(){
-  var data = {'_zeroid':getCookie('_zeroid'),'action':'visit'};
-  data_ = JSON.stringify(data)
-  sendData(data_)
-}
+JSON.stringify({'_zeroid':getCookie('_zeroid'),'action':'visit'};)
+sendData(data_)
