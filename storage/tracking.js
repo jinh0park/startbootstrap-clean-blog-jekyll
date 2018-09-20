@@ -11,41 +11,48 @@ var sendData = function(data) {
       console.log(JSON.parse(Object.keys(data)[1]));
     }
   });
-}
+};
 
 var getCookie = function(name) {
   var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-  return value? value[2] : null;
+  return value ? value[2] : null;
 };
 
 var setCookie = function(name, value, exp) {
   var date = new Date();
-  date.setTime(date.getTime() + exp*24*60*60*1000);
+  date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
   document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
 };
 
 var issueID = function() {
   // 이미 쿠키에 id가 있으면 설정하지 않는다.
-  if(getCookie('_zeroid')){
+  if (getCookie('_zeroid')) {
     return false
   }
-  var date= new Date()
-  exp = 7;  //7일 후에 만료
-  date.setTime(date.getTime() + exp*24*60*60*1000);
+  var date = new Date()
+  exp = 7; //7일 후에 만료
+  date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
   var value = `ZERO.${date.getTime()}.${Math.random()}`;
   document.cookie = '_zeroid=' + value + ';expires=' + date.toUTCString() + ';path=/';
-}
+};
 
-var orderResult = function(){
+var orderResult = function() {
   var order_id = document.getElementById('order_id').value;
   var date = new Date()
-  var data_ = JSON.stringify({'_zeroid':getCookie('_zeroid'),'action':'order','order_id':order_id})
+  var data_ = JSON.stringify({
+    '_zeroid': getCookie('_zeroid'),
+    'action': 'order',
+    'order_id': order_id
+  })
   sendData(data_)
-}
+};
 
 
 //모든 페이지에서 Default로 실행되는 구간
-issueID()
+issueID();
 
-JSON.stringify({'_zeroid':getCookie('_zeroid'),'action':'visit'})
-sendData(data_)
+var data_ = JSON.stringify({
+  '_zeroid': getCookie('_zeroid'),
+  'action': 'visit'
+});
+sendData(data_);
