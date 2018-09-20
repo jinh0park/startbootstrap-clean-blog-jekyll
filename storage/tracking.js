@@ -42,7 +42,7 @@ var orderResult = function() {
   var data_ = JSON.stringify({
     '_zeroid': getCookie('_zeroid'),
     'action': 'order',
-    'order_id': order_id
+    'order_id': order_id,
     'location':window.location.href
   })
   sendData(data_)
@@ -54,7 +54,7 @@ issueID();
 
 var data_ = JSON.stringify({
   '_zeroid': getCookie('_zeroid'),
-  'action': 'visit'
+  'action': 'visit',
   'location':window.location.href
 });
 sendData(data_);
