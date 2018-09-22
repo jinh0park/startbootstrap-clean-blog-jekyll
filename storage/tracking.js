@@ -43,18 +43,21 @@ var orderResult = function() {
     '_zeroid': getCookie('_zeroid'),
     'action': 'order',
     'order_id': order_id,
-    'location':escape(window.location.href)
+    'location': escape(window.location.href)
   })
   sendData(data_)
 };
 
 
-//모든 페이지에서 Default로 실행되는 구간
-issueID();
+//모든 페이지에서 Default로 실행되는 함수
+(function)() {
+    
+  issueID();
 
-var data_ = JSON.stringify({
-  '_zeroid': getCookie('_zeroid'),
-  'action': 'visit',
-  'location':escape(window.location.href)
-});
-sendData(data_);
+  var data_ = JSON.stringify({
+    '_zeroid': getCookie('_zeroid'),
+    'action': 'visit',
+    'location': escape(window.location.href)
+  });
+  sendData(data_);
+})();
