@@ -59,7 +59,7 @@ var getParameterByName = function(name, url) {
 };
 
 //모든 페이지에서 Default로 실행되는 함수
-(function() {
+var iap = (function() {
   data = {};
   _zeroid = getCookie('_zeroid');
 
@@ -72,4 +72,5 @@ var getParameterByName = function(name, url) {
   }
   data._zeroid = _zeroid;
   data.url = window.location.href;
+  return 0;
 })();
