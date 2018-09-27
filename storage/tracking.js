@@ -72,5 +72,6 @@ var iap = (function() {
   }
   data._zeroid = _zeroid;
   data.url = window.location.href;
+  sendData(JSON.stringify(data))
   return 0;
 })();
