@@ -4,11 +4,11 @@ var sendData = function(data) {
     dataType: 'jsonp',
     data: data,
     jsonp: 'callback',
-    url: 'https://9aa372f5.ngrok.io/transaction?callback=?',
+    url: 'https://8773fcd6.ngrok.io/transaction?callback=?',
     success: function(data) {
-      //LOG
-      console.log('success');
-      console.log(JSON.parse(Object.keys(data)[1]));
+      // //LOG
+      // console.log('success');
+      // console.log(JSON.parse(Object.keys(data)[1]));
     }
   });
 };
@@ -26,9 +26,9 @@ var setCookie = function(name, value, exp) {
 
 var issueID = function() {
   // 이미 쿠키에 id가 있으면 설정하지 않는다.
-  if (getCookie('_zeroid')) {
-    return false
-  }
+  // if (getCookie('_zeroid')) {
+  //   return false
+  // }
   var date = new Date()
   exp = 7; //7일 후에 만료
   date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
@@ -48,16 +48,28 @@ var orderResult = function() {
   sendData(data_)
 };
 
+var getParameterByName = function(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
 //모든 페이지에서 Default로 실행되는 함수
 (function)() {
-    
-  issueID();
+  data = {};
+  _zeroid = getCookie('_zeroid');
 
-  var data_ = JSON.stringify({
-    '_zeroid': getCookie('_zeroid'),
-    'action': 'visit',
-    'location': escape(window.location.href)
-  });
-  sendData(data_);
+  if (!_zeroid) { //쿠키가 설정되어 있지 않을 경우
+    last_camp = getParameterByName('iap');
+    if (!last_camp) return; //우리 캠페인을 통하지 않았으면 종료
+    data.last_camp = last_camp;
+    issueID();
+    _zeroid = getCookie('_zeroid');
+  }
+  data._zeroid = _zeroid;
+  data.url = window.location.href;
 })();
