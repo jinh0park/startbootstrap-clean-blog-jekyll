@@ -71,7 +71,7 @@ var iap = (function() {
     _zeroid = getCookie('_zeroid');
   }
   data._zeroid = _zeroid;
-  data.url = window.location.href;
+  data.url = escape(window.location.href);
   sendData(JSON.stringify(data))
   return 0;
 })();
