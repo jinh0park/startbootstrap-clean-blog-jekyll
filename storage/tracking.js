@@ -70,6 +70,8 @@ var iap = (function() {
     issueID();
     _zeroid = getCookie('_zeroid');
   }
+  last_camp = getParameterByName('iap');
+  if (last_camp) data.last_camp = last_camp;
   data._zeroid = _zeroid;
   data.url = escape(window.location.href);
   sendData(JSON.stringify(data))
