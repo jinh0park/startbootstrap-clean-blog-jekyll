@@ -36,17 +36,6 @@ var issueID = function() {
   document.cookie = '_zeroid=' + value + ';expires=' + date.toUTCString() + ';path=/';
 };
 
-var orderResult = function() {
-  var order_id = document.getElementById('order_id').value;
-  var date = new Date()
-  var data_ = JSON.stringify({
-    '_zeroid': getCookie('_zeroid'),
-    'action': 'order',
-    'order_id': order_id,
-    'location': escape(window.location.href)
-  })
-  sendData(data_)
-};
 
 var getParameterByName = function(name, url) {
   if (!url) url = window.location.href;
