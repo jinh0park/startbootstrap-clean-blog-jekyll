@@ -49,7 +49,7 @@
       if (last_camp) data.last_camp = last_camp;
       data._zeroid = _zeroid;
       data.url = escape(window.location.href);
-      return `url=${data.url}&_zeroid=${data._zeroid}&last_camp${data.last_camp}`
+      return `url=${data.url}&_zeroid=${data._zeroid}&last_camp=${data.last_camp}`
     })();
     document.getElementById('iframe').contentWindow.postMessage(msg, '*');
   });
