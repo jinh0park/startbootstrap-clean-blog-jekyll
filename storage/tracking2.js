@@ -40,7 +40,7 @@
 
       if (!_zeroid) {
         last_camp = getParameterByName('iap');
-        if (!last_camp) return;
+        if (!last_camp) last_camp='unknown';
         data.last_camp = last_camp;
         issueID();
         _zeroid = getCookie('_zeroid');
