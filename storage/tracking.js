@@ -5,7 +5,7 @@
       dataType: 'jsonp',
       data: data,
       jsonp: 'callback',
-      url: 'https://addfd1b8.ngrok.io/transaction?callback=?',
+      url: 'https://addfd1b8.ngrok.io/transaction/?callback=?',
       success: function(data) {}
     });
   };
