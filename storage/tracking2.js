@@ -40,17 +40,20 @@
 
       if (!_zeroid) {
         last_camp = getParameterByName('iap');
-        if (!last_camp) last_camp='unknown';
+        if (!last_camp) return null;
         data.last_camp = last_camp;
         issueID();
         _zeroid = getCookie('_zeroid');
       }
       last_camp = getParameterByName('iap');
-      if (last_camp) data.last_camp = last_camp;
+      data.last_camp = last_camp || null;
       data._zeroid = _zeroid;
       data.url = escape(window.location.href);
-      return `url=${data.url}&_zeroid=${data._zeroid}&last_camp=${data.last_camp}`
+      return `url=${data.url}&_zeroid=${data._zeroid}&last_camp${data.last_camp}`
     })();
+
+    if(!msg) return;
+
     document.getElementById('iframe').contentWindow.postMessage(msg, '*');
   });
 })();
