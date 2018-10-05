@@ -53,8 +53,7 @@
       if(EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA){
         data.content = JSON.stringify(EC_FRONT_EXTERNAL_SCRIPT_VARIABLE_DATA)
       }
-      return `url=${data.url}&_zeroid=${data._zeroid}&last_camp=
-      ${data.last_camp}&content=${data.content || JSON.stringify({})}`
+      return `url=${data.url}&_zeroid=${data._zeroid}&last_camp=${data.last_camp}&content=${data.content || JSON.stringify({})}`
     })();
 
     if(!msg) return;
