@@ -60,6 +60,8 @@
       }
       return `url=${data.url}&_zeroid=${data._zeroid}&last_camp=${data.last_camp}&content=${data.content || JSON.stringify({})}`
     })();
+    console.log(msg)
+    console.log("qqq");
 
     if(!msg) return;
     console.log(msg)
