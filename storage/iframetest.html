@@ -1,0 +1,8 @@
+<script type="text/javascript">
+window.onload = function() {
+  window.parent.postMessage({ hello: 'parent' }, '*');
+};
+window.addEventListener('message', function(e) {
+  console.log(e.data); // zerocho
+});
+</script>
