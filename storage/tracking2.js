@@ -62,7 +62,7 @@
     })();
 
     if(!msg) return;
-
+    console.log(msg)
     document.getElementById('iframe').contentWindow.postMessage(msg, '*');
   });
 })();
