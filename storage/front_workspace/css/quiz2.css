@@ -1,0 +1,39 @@
+body {
+  font-family: 'Nanum Square';
+}
+
+#table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width:100%;
+  margin: auto;
+}
+#table img {
+  display: block;
+  width:100%;
+}
+#table td {
+  padding: 1px;
+}
+#container {
+  margin: auto;
+}
+
+.head {
+  text-align: center;
+  height: 50px;
+  background: #edecd6;
+  font-size:30px;
+}
+
+#retry {
+  padding:20px;
+  text-align: center;
+  font-size: 20px;
+}
+
+#container{
+  width:90%;
+  box-shadow: 0 0 3px #ddd;
+  outline: 4px solid #f5dd5d;
+}

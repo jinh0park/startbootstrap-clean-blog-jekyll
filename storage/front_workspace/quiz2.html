@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>QUIZ2</title>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
+  <link href="./css/quiz2.css" type=" text/css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div id="container">
+    <table id="table">
+      <tr>
+        <td colspan=3 class="head">1 / 20번 문제</td>
+      </tr>
+      <tr>
+        <td colspan=3 class="head" id="name"></td>
+      </tr>
+      <tr>
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1 / 20 점
+        </td>
+        <td colspan=2>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="retry">
+    <a href="./" style="text-decoration:none">다시하기</a>
+  </div>
+
+  <script type="text/javascript">
+    var filter = "win16|win32|win64|mac|macintel";
+    if (navigator.platform) {
+      if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+        //mobile
+      } else {
+        //pc
+        $("#container").css("max-width", "400px");
+      }
+    }
+  </script>
+  <script type="text/javascript">
+    var d = new Date();
+    $(document).ready(function() {
+      setInterval(function() {
+        var x = parseInt($("totaltime").html());
+        var date = new Date();
+        var t = date - d;
+        $("#timer").html(((x + t) / 1000).toFixed(1));
+        $("#time").attr("value", t)
+      }, 10);
+    });
+  </script>
+
+  <script type="text/javascript">
+    (function($) {
+      var cardall = $.getJSON('./cards.collectible.json');
+      console.log(cardall[0]);
+      var cards = '[[1033, "GVG_088","오우거 닌자"], [1263, "KAR_204","칠흑색 비숍"], [1110, "ICC_054","퍼역"], [1703, "UNG_843","폭식초"], [137, "BOT_034","플라크"], [933, "GIL_825","고드프리"], [573, "EX1_029","노움"], [231, "BOT_534","뿔"], [579, "EX1_046","드워프"]]';
+      cards = JSON.parse(cards);
+      var url = "https://s3.ap-northeast-2.amazonaws.com/dolsite.dolquiz.img/cardimg-cropped/";
+      var answerCard = cards[Math.floor(Math.random() * 9)];
+
+      $("#name").html('<b> Q.' + answerCard[2] + '</b>');
+
+      $(".thumb").each(function(index, item) {
+        $(item).attr("src", url + cards[index][1] + ".png").attr("card-id", cards[index][0])
+      });
+      //visual
+      $(".thumb").hover(
+        function() {
+          $(this).css("filter", "grayscale(70%)")
+        },
+        function() {
+          $(this).css("filter", "grayscale(0%)")
+        }
+      )
+    })(jQuery);
+  </script>
+</body>
+
+</html>
