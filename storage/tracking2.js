@@ -60,11 +60,10 @@
       }
       return `url=${data.url}&_zeroid=${data._zeroid}&last_camp=${data.last_camp}&content=${data.content || JSON.stringify({})}`
     })();
-    console.log(msg)
-    console.log("qqq");
 
     if(!msg) return;
-    console.log(msg)
-    document.getElementById('iframe').contentWindow.postMessage(msg, '*');
+    url = "http://Monetcloset-env-1.ubtmtuge33.ap-northeast-2.elasticbeanstalk.com/logs/iframe";
+    document.getElementById("mc-pixel").src = url;
+    document.getElementById('mc-pixel').contentWindow.postMessage(msg, '*');
   });
 })();
