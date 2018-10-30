@@ -1,0 +1,21 @@
+.quiztable {
+  max-width: 900px;
+  width:100%;
+  margin: auto;
+}
+
+.quiztable img {
+  width: 100%;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+.quiztable .answer-cell {
+  padding: 10px;
+}
+
+.quiztable input.answer {
+  width: 100%;
+}

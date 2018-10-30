@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>QUIZ2</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
+  <link href="./css/quiz2.css" type=" text/css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div id="loading">
+    <p id="loading-rate">
+
+    </p>
+  </div>
+  <div id="container" style="display:none">
+    <table id="table">
+      <tr>
+        <td colspan=3 class="head"><span id="probnum">1</span> / 20번 문제</td>
+      </tr>
+      <tr>
+        <td colspan=3 class="head" id="name"></td>
+      </tr>
+      <tr class="thumb-tr">
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+      </tr>
+      <tr class="thumb-tr">
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+      </tr>
+      <tr class="thumb-tr">
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+        <td>
+          <img class="thumb" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span id="score">0</span> / 20 점
+        </td>
+        <td colspan=2 id="timer">
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="retry">
+    <a href="./" style="text-decoration:none">다시하기</a>
+  </div>
+
+
+  <script type="text/javascript">
+    var filter = "win16|win32|win64|mac|macintel";
+    if (navigator.platform) {
+      if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+        //mobile
+      } else {
+        //pc
+        $("#container").css("max-width", "400px");
+      }
+    }
+  </script>
+
+
+  <script type="text/javascript">
+    var cardAll = (function loadAllCards() {
+      $.ajax({
+        dataType: 'json',
+        url: './cards.collectible.json',
+        data: '',
+        async: false,
+        success: function(data) {
+          cardAll = data;
+        }
+      });
+      return cardAll;
+    })();
+    var cardCount = cardAll.length;
+
+    var x = 0;
+
+    function preloadImages() {
+      var url = "https://jinh0park.github.io/storage/cardimg-cropped/";
+      for (i in cardAll) {
+        var img = new Image();
+        img.src = url + cardAll[i].id + ".png";
+        img.onload = function() {
+          x += 1;
+          $("#loading-rate").html((x / cardCount * 100).toFixed(1) + ' %');
+        };
+      }
+    }
+
+    function loadQuiz() {
+      var url = "https://jinh0park.github.io/storage/cardimg-cropped/";
+      var choicesIndex = _.sampleSize(_.range(cardCount), 9);
+      var cards = []
+      for (i in choicesIndex) {
+        var card = cardAll[choicesIndex[i]];
+        cards.push([choicesIndex[i], card.id, card.name]);
+      }
+      var ans = Math.floor(Math.random() * 9)
+      var answerCard = cards[ans];
+      $("#name").html('<b> Q.' + answerCard[2] + '</b>');
+
+      $(".thumb").each(function(index, item) {
+        $(item).attr("src", url + cards[index][1] + ".png").attr("card-id", cards[index][0])
+        $(item).attr("num",index);
+      });
+      return ans;
+    };
+
+    preloadImages();
+
+    var f = setInterval(function() {
+      if (x == cardCount) {
+        alert("완료");
+        $("#loading").css("display", "none");
+        $("#container").css("display", "block");
+
+        clearInterval(f);
+        // 로딩 완료
+        (function() {
+          // 타이머 초기화
+          var d = new Date();
+          $(document).ready(function() {
+            setInterval(function() {
+              var date = new Date();
+              var t = date - d;
+              $("#timer").html(((t) / 1000).toFixed(1));
+            }, 10);
+          });
+          //점수 초기화
+          var score = 0;
+          var probnum = 1;
+
+          // 퀴즈 로딩
+          var ans = loadQuiz();
+          $(".thumb").click(function() {
+            if($(this).attr("num") == ans){
+              score+=1;
+              console.log(score);
+              $("#score").text(score);
+            }
+            probnum+=1;
+            $("#probnum").text(probnum);
+            ans = loadQuiz();
+          });
+
+
+
+
+
+
+
+
+
+
+        })();
+      }
+    }, 10)
+  </script>
+
+
+  <script>
+    //visual
+    $(".thumb").hover(
+      function() {
+        $(this).css("filter", "grayscale(70%)")
+      },
+      function() {
+        $(this).css("filter", "grayscale(0%)")
+      }
+    );
+  </script>
+
+</body>
+
+</html>
