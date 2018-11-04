@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+  <link rel="stylesheet" href="t.css">
+  <title></title>
+</head>
+
+<body>
+  <script>
+    function fnMove(seq) {
+      var offset = $("#player-" + seq).offset();
+      $('html, body').animate({
+        scrollTop: offset.top
+      }, 400);
+    }
+  </script>
+  <div id="container">
+
+  </div>
+
+
+  <div id="blank" style="margin-bottom:2000px">
+
+  </div>
+
+
+  <script type="text/javascript">
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var N = 5;
+
+    var player = [];
+    var on = false;
+    var cursor = 0;
+
+
+
+
+    function createYTPlayer(i, videoId_) {
+      var p = document.createElement("div");
+      p.id = "player-" + i;
+      document.getElementById("container").appendChild(p);
+      var w = $(parent.window).width() * (0.8);
+      var h = w * 0.6;
+      var y = new YT.Player('player-' + i, {
+        height: h.toString(),
+        width: w.toString(),
+        playerVars: {
+          'autoPlay': 0,
+          'end': 5,
+          'rel':0,
+          'showinfo':0,
+          'controls':0,
+          'fs':0
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': commandCenter
+        },
+        videoId: videoId_
+      });
+      return y;
+    }
+
+    function onYouTubeIframeAPIReady() {
+      // 초기 영상 N개 셋팅
+      for (var i = 0; i < N; i++) {
+        player.push(
+          createYTPlayer(i, '3x0Z1ChAFc0')
+        );
+      }
+    }
+
+    function playLoop(){
+      if(on){
+        player[cursor].pauseVideo();
+        on = false;
+      } else {
+        player[cursor].playVideo();
+        on = true;
+      }
+
+    }
+
+    function playOnlyThis(cursor){
+      for(var i=0;i<N;i++){
+        if(i!==cursor){
+          player[i].stopVideo();
+        }
+      }
+    }
+
+    function onPlayerReady(event) {
+    }
+
+
+    function commandCenter(event) {
+      var index = parseInt(event.target.a.id.split("-")[1]);
+      if(event.data == YT.PlayerState.ENDED && on && index == cursor){
+        cursor += 1;
+        player[cursor].playVideo();
+        player[cursor].playVideo();
+      }
+      //재생되고 있는건 오로지 한 개
+      if(event.data == YT.PlayerState.PLAYING){
+        on = true;
+        cursor = index;
+        playOnlyThis(cursor);
+        fnMove(cursor);
+        if(cursor+5 >= N){
+          var N_ = cursor + 5;
+          for(var i=N;i<N_;i++){
+            player.push(
+              createYTPlayer(i, '3x0Z1ChAFc0')
+            );
+          }
+          N=N_;
+        }
+      }
+    }
+
+    function playNext(){
+      player[cursor].pauseVideo();
+      cursor+=1;
+      player[cursor].playVideo();
+      player[cursor].playVideo();
+    }
+
+    function playPrev(){
+      player[cursor].pauseVideo();
+      cursor-=1;
+      player[cursor].playVideo();
+      player[cursor].playVideo();
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //사이즈 관련
+
+    $(window).resize(function() {
+      $("#container").find('iframe').each(function(i, e) {
+        var w = $(parent.window).width() * (0.8);
+        var h = w * 0.6;
+        $(this).attr('height', h.toString());
+        $(this).attr('width', w.toString());
+      });
+    });
+  </script>
+</body>
+
+</html>

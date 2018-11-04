@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="u.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+</head>
+
+<body>
+
+  <div class="container-fluid" id="channel">
+    <div class="row">
+      <div class="col-xs-10" id="player-box">
+        <iframe id="player-list" src="./w2.html" name="playerbox" scrolling="no"></iframe>
+      </div>
+      <div class="col-xs-2" id="player-control">
+        <div class="row">
+          <div class="col-xs-12 button" onclick="frames['playerbox'].playPrev()">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+          </div>
+          <div class="col-xs-12 button" onclick="frames['playerbox'].playLoop()">
+            <span class="glyphicon glyphicon-play"></span>
+          </div>
+          <div class="col-xs-12 button" onclick="frames['playerbox'].playNext()">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(".button").hover(function() {
+      $(this).css("background-color", "#AAA")
+    },
+    function() {
+      $(this).css("background-color", "#FFF")
+    }
+    )
+  </script>
+
+
+
+
+</body>
+
+</html>
