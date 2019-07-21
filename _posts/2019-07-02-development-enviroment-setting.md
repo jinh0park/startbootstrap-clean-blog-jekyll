@@ -1,4 +1,4 @@
----
+﻿---
 layout: post
 title:  "개발환경 세팅 관련 유용한 글 모음"
 subtitle: "개발환경 세팅 관련 유용한 글 모음"
@@ -12,3 +12,11 @@ comments: true
 
 - CUDA 8.0 지우고 9.0 설치하기  
 http://blog.ju-ing.com/2018/04/05/CUDA-8.0-to-9.0/
+
+## Data
+
+- [리눅스에서 구글 드라이브 사용하기](https://geni.isnew.info/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%97%90%EC%84%9C-%EA%B5%AC%EA%B8%80-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0.html)
+
+## Web
+
+- [CodeMirror Setting](https://deoki.tistory.com/48)
