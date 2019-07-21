@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Compare Image Demo</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <table id="main-table">
+      <thead>
+        <tr>
+          <th class="center-align" colspan="3">Image Compare Tool for Image Reconstruction DEMO: jinh0park, 2019</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Label</td>
+          <td>Image 1 <input type="text" name="" value="Label" id="image-1-name"></td>
+          <td>Image 2 <input type="text" name="" value="Result" id="image-2-name"></td>
+        </tr>
+        <tr>
+          <td>Upload</td>
+          <td><input type="file" name="image-1" value="" id="image-1-form"></td>
+          <td><input type="file" name="image-2" value="" id="image-2-form"></td>
+        </tr>
+        <tr>
+          <td>Thumbnail</td>
+          <td><img src="" alt="image-1" id="image-1-thumbnail"></td>
+          <td><img src="" alt="image-2" id="image-2-thumbnail"></td>
+        </tr>
+        <tr>
+          <td>
+            Delay:
+            <input type="number" name="" value="500" id="delay">
+          </td>
+          <td colspan="2" class="center-align">
+            <a class="waves-effect waves-light btn-large" onclick="show(1)">Show Image 1</a>
+            <a class="waves-effect waves-light btn-large" onclick="run()" style="background-color:skyblue" id="run">PLAY</a>
+            <a class="waves-effect waves-light btn-large" onclick="show(2)">Show Image 2</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <img src="" alt="" id="result-img">
+  <h1 id="result-label" style="text-align:center"></h1>
+
+  <script>
+    var play = false;
+    var toggle = true;
+    function show(ind) {
+      $("#result-img").attr("src", $("#image-" + ind + "-thumbnail").attr("src"));
+      $("#result-label").text($("#image-"+ ind + "-name").val());
+    }
+    function loop() {
+      setTimeout(function(){
+        if(toggle){
+          $("#result-img").attr("src", $("#image-1-thumbnail").attr("src"));
+          $("#result-label").text($("#image-1-name").val());
+        } else {
+          $("#result-img").attr("src", $("#image-2-thumbnail").attr("src"));
+          $("#result-label").text($("#image-2-name").val());
+        }
+        toggle = !toggle;
+        if(play) {
+          loop();
+        }
+      }, parseInt($("#delay").val()));
+    }
+
+    function run() {
+      if(play){
+        $("#run").css("background-color", "skyblue").text("PLAY");
+      } else {
+        $("#run").css("background-color", "tomato").text("STOP");
+        loop();
+      }
+      play = !play;
+    }
+
+    function readURL(input, id) {
+
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#' + id).attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#image-1-form").change(function() {
+      readURL(this, "image-1-thumbnail");
+    });
+
+    $("#image-2-form").change(function() {
+      readURL(this, "image-2-thumbnail");
+    });
+  </script>
+  <style>
+    td:nth-child(1) {
+      width: 10%
+    }
+
+    td:nth-child(2) {
+      width: 45%
+    }
+
+    td:nth-child(3) {
+      width: 45%
+    }
+
+    td img {
+      width: 100%;
+      height: auto;
+    }
+
+    #result-img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+
+</body>
+
+</html>
