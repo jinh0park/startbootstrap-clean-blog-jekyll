@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  'A Review of "Neural Style Transfer: A Review" - 1'
-subtitle: "Introduction of the NST and a brief history of the style transfer"
+subtitle: "Introduction to NST and a brief history of style transfer"
 date:   2019-08-02 04:31:13 +0900
 comments: true
 ---
