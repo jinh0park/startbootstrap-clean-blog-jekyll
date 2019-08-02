@@ -47,4 +47,6 @@ Example-Based Rendering은 일종의 Supervised-Learning으로써, 이를 처음
 ### Image Processing and Filtering
 원본 이미지에 단순히 필터를 씌우는 등의 처리를 하여 이미지를 생성하는 방식이다. Blurring filter 등이 이에 속하며, 필터링 알고리즘들은 일반적으로 straightforward하기 때문에 구현이 쉽고 간단하다는 장점이 있지만, Style Diversitiy 측면에서 매우 제한되어있다는 단점이 있다.
 
+
+### Summary
 종합해보면 위에 소개된 Style Transfer Without Neural Network들은 각각의 장점들을 가지고 있으나 flexibility, style diversity, 그리고 effective image structure extraction 등에 대해서 한계점을 가지고 있다. 기존의 방식들에 대한 이러한 한계점들이 Neural Style Transfer(NST)가 탄생한 배경이 되었다.
