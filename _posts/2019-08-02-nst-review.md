@@ -12,7 +12,7 @@ comments: true
 
 학문이 예술과 결합하는 것은 즐거운 일이다. 쇠라의 점묘화에서 빛의 회절 원리를 찾아내거나, 음계를 파동의 공명 현상과 연결지어 이해하는 행위들은 과학에 생기를 불어넣어준다. 그 뿐만 아니라 이런 식의 접근은 새로운 학문을 접할 때 흥미를 갖게 해주기도 한다. 딥러닝에서 이런 역할을 하는 것을 꼽으라면 단연 NST를 예로 들 수 있다. 작년 겨울 cs231n 강의를 들으면서 가장 기억에 깊게 남았던 것이 NST로 만든 고흐 스타일의 그림일 정도로 매력있는 분야였다.
 
-Style Transfer는  이미지의 Content는 유지하면서 Style을 바꾸는 방법을 말한다. 위 그림을 예로 들면, 원본 이미지(A)의 Content(주택, 강, 하늘)은 그대로 유지하면서 그 스타일을 다르게 하여 이미지를 생성하는 것이다(B: 고흐, C: 윌리엄터너, D: 뭉크). Style Transfer중 Neural Network를 이용하는 것을 Neural Style Transfer(NST)라고 부르며, 특히 CNN(Convolutional Neural Network)이 발견은 Style Transfer에 큰 발전을 가져왔다. 이 글을 포함한 앞으로 이어질 글들에서 2017년에 나온 Review Paper *Neural Style Transfer: A Review* 를 읽고 요약, 구현을 하며 Style Transfer에 대한 Greedy Study를 하고자 한다.
+Style Transfer는  이미지의 Content는 유지하면서 Style을 바꾸는 방법을 말한다. 위 그림을 예로 들면, 원본 이미지(A)의 Content(주택, 강, 하늘)은 그대로 유지하면서 그 스타일을 다르게 하여 이미지를 생성하는 것이다(B: 윌리엄터너, C: 고흐, D: 뭉크). Style Transfer중 Neural Network를 이용하는 것을 Neural Style Transfer(NST)라고 부르며, 특히 CNN(Convolutional Neural Network)이 발견은 Style Transfer에 큰 발전을 가져왔다. 이 글을 포함한 앞으로 이어질 글들에서 2017년에 나온 Review Paper *Neural Style Transfer: A Review* 를 읽고 요약, 구현을 하며 Style Transfer에 대한 Greedy Study를 하고자 한다.
 
 **[Review Paper Link](https://arxiv.org/abs/1705.04058)**
 
