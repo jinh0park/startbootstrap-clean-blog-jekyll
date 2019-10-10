@@ -1,19 +1,10 @@
-  <div class="col-md-5">
-    <div class="card shadow" style="width: 100%;">
-      <img src="/img/portfolio/arxivthearxiv-thumbnail.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Web Project 2: ArxivTheArxiv!</h5>
-        <p class="card-text"></p>
-
-      </div>
+<div class="row">
+  {% assign portfolios = site.portfolios | reverse %}
+  {% for portfolio in portfolios limit : 3 %}
+    <div class="col-4">
+      <a href="{{ portfolio.url }}">
+      <img src="/img/portfolio/{{ portfolio.thumbnail }}" alt="..." class="shadow img-thumbnail" style="width:100%">
+      </a>
     </div>
-  </div>
-  <div class="col-md-5">
-    <div class="card shadow" style="width: 100%;">
-      <img src="/img/portfolio/robotarm-thumbnail.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">4DOF Robot Arm with OCR</h5>
-        <p class="card-text"></p>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
+</div>

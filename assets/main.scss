@@ -15,5 +15,18 @@ img.sdsdsd {
 }
 
 a {
-     text-decoration: none !important;
+  text-decoration: none !important;
+}
+
+.home-bar {
+  width: 100%;
+  padding: {
+    top: 5px;
+    bottom: 5px;
+  }
+  margin: {
+    top: 15px;
+    bottom: 15px;
+  }
+  background-color: #f5f5f5;
 }
