@@ -1,0 +1,36 @@
+---
+layout: page
+title: Portfolio
+description: History of my studying life.
+background: '/img/bg-portfolio.jpg'
+---
+
+<div class="container-fluid" id="portfolio">
+  <div class="row">
+    {% for portfolio in site.portfolios reversed %}
+    <div class="col-sm-6 col-lg-6">
+      <a href="{{ portfolio.url }}">
+        <div class="card shadow" style="width: 100%;">
+          <img src="/img/portfolio/{{ portfolio.thumbnail }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ portfolio.title }}</h5>
+            <p class="card-text">
+              {% for name in portfolio.stack %}
+              <span class="badge badge-pill badge-secondary">{{ name }}</span>
+              {% endfor %}
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style media="screen">
+  #portfolio div.card {
+    margin-bottom: {
+      15px
+    }
+  }
+</style>
